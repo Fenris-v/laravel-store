@@ -10860,3 +10860,37 @@ img {
   top: 10%;
 }
 
+.bottom-plus {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.bottom-text {
+  top: 15%;
+  left: 5%;
+}
+
+.s_feedback {
+  background: url("/images/main/feedbackBg.png");
+  background-size: cover;
+  height: 440px;
+}
+
+.breadcrumb {
+  background: transparent;
+  justify-content: flex-end;
+}
+
+.breadcrumb-item a {
+  color: #000000;
+}
+
+.breadcrumb-item.active {
+  color: #ffffff;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  color: #000000;
+}
+

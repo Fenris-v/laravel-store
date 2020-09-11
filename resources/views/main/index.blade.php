@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Fenris - Laravel')
+@section('title', 'Главная')
 
 @section('content')
 
@@ -8,6 +8,12 @@
 
     @include('main.sections.categories_block')
 
-    @include('main.sections.items')
+    @if(isset($goods))
+        @include('main.sections.items')
+    @endif
+
+    @include('main.sections.bottom_banner')
+
+    @include('main.sections.feedback')
 
 @endsection

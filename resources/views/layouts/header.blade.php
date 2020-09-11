@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row py-4 align-items-center">
                 <div class="col-md-2">
-                    <a class="d-flex align-items-center" href="#">
+                    <a class="d-flex align-items-center" href="{{ route('mainPage') }}">
                         <img class="mr-1" alt="logo" src="/images/logo.png">
                         BRAN<span>D</span>
                     </a>
@@ -14,71 +14,33 @@
                         <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
                     </form>
                 </div>
-                <div class="col-md-2 text-right">
-                    <a href="cart.html">
+                <div class="col-md-1 text-right">
+                    <a href="#">
                         <img alt="cart" src="/images/icons/cart.png">
                     </a>
-
-                    <div style="display: none;">
-                        <table>
-                            <thead>
-                            <tr>
-                                <td>image</td>
-                                <td>desc</td>
-                                <td>quantity</td>
-                                <td></td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <img alt="image" src="/images/main/item1.png">
-                                </td>
-                                <td>
-                                    <div data-id="17">Mango People T-shirt</div>
-                                    <div>$9.99</div>
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <i class="fas fa-minus-circle"></i>
-                                    </a> 1 <a href="#">
-                                        <i class="fas fa-plus-circle"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <i class="fas fa-times-circle"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img alt="image" src="/images/main/item8.png">
-                                </td>
-                                <td>
-                                    <div data-id="18">Mango People T-shirt</div>
-                                    <div>$4.49</div>
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <i class="fas fa-minus-circle"></i>
-                                    </a> 2 <a href="#">
-                                        <i class="fas fa-plus-circle"></i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="#">
-                                        <i class="fas fa-times-circle"></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                        <div><span>Total:</span> $18.97</div>
-                    </div>
                 </div>
-                <div class="col-md-2 text-right">
-                    <a class="btn btn-primary" href="checkout.html"><span>My Account</span></a>
+                <div class="col-md-3 justify-content-end d-flex">
+                    @guest
+                        <a class="btn btn-primary mr-1" href="{{ route('login') }}">{{ __('auth.login') }}</a>
+                        <a class="btn btn-outline-primary" href="{{ route('register') }}">{{ __('auth.register') }}</a>
+                    @else
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="p-0 dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('auth.logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    @endguest
                 </div>
             </div>
         </div>
@@ -88,25 +50,32 @@
             <nav class="row">
                 <ul class="col-md-12 d-flex list-unstyled justify-content-between mb-0">
                     <li class="nav-item active">
-                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold" href="#">Home</a>
+                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold"
+                           href="{{ route('mainPage') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold" href="product.html">Man</a>
+                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold"
+                           href="{{ route('goods') }}">Man</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold" href="product.html">Women</a>
+                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold"
+                           href="{{ route('goods') }}">Women</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold" href="product.html">Kids</a>
+                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold"
+                           href="{{ route('goods') }}">Kids</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold" href="product.html">Accessories</a>
+                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold"
+                           href="{{ route('goods') }}">Accessories</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold" href="product.html">Featured</a>
+                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold"
+                           href="{{ route('goods') }}">Featured</a>
                     </li>
                     <li class="nav-item">
-                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold" href="product.html">Hot Deals</a>
+                        <a class="text-decoration-none text-uppercase p-2 d-block font-weight-bold"
+                           href="{{ route('goods') }}">Hot Deals</a>
                     </li>
                 </ul>
             </nav>

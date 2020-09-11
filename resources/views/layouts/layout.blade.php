@@ -21,6 +21,10 @@
 
 @include('layouts.header')
 
+@if(!in_array(\Illuminate\Support\Facades\Route::currentRouteName(), config('breadcrumbs.exclude')))
+    @include('layouts.breadcrumbs')
+@endif
+
 @yield('content')
 
 @include('layouts.footer')
